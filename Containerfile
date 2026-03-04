@@ -15,8 +15,6 @@ COPY etc/bashrc.customizations /etc/bashrc.customizations
 # Combined dnf operations: update and install in one layer with --nodocs
 RUN dnf update -y && \
     dnf install -y --nodocs \
-        httpd \
-        mod_ssl \
         cockpit \
         git \
         vim-enhanced \
@@ -37,7 +35,7 @@ RUN ln -s /usr/bin/node-24 /usr/bin/node && \
 
 # System configuration
 RUN systemctl set-default multi-user.target && \
-    systemctl enable httpd cockpit.socket podman-auto-update.timer fstrim.timer && \
+    systemctl enable cockpit.socket podman-auto-update.timer fstrim.timer && \
     ln -s /usr/share/zoneinfo/America/New_York /etc/localtime && \
     cat /etc/bashrc.customizations >> /etc/bashrc && \
     ln -s /usr/bin/fusermount3 /usr/bin/fusermount
