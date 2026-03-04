@@ -1,0 +1,5 @@
+# Secrets - must not be baked into images
+etc/rclone.conf
+
+# Local Claude state
+.claude/

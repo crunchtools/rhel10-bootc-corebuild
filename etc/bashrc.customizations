@@ -1,0 +1,6 @@
+# Customizations
+shopt -s histappend
+export PROMPT_COMMAND='history -a'
+export HISTSIZE="200000"
+export EDITOR="vim"
+export RCLONE_CONFIG="/etc/rclone.conf"
