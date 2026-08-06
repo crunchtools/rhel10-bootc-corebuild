@@ -52,5 +52,8 @@ RUN subscription-manager unregister && \
     /var/tmp/* \
     /root/.cache
 
+# Remove old kernel to satisfy bootc lint (dnf update may pull a newer one)
+RUN cd /usr/lib/modules && ls | sort -V | head -n -1 | xargs -I{} rm -rf {}
+
 # Final lint step to prevent easy-to-catch issues at build time
 RUN bootc container lint
